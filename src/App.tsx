@@ -16,6 +16,20 @@ const App: React.FC = () => {
   const track = useCurrentTrack();
   const [isPlayerReady, setIsPlayerReady] = useState<boolean>(false);
 
+  const queueThis = () => {
+    async function run() {
+      const isSetup = await SetupService();
+      setIsPlayerReady(isSetup);
+
+      const queue = await TrackPlayer.getQueue();
+      if (isSetup && queue.length <= 0) {
+        await QueueInitalTracksService();
+      }
+    }
+
+    run();
+  }
+
   useEffect(() => {
     async function run() {
       const isSetup = await SetupService();
@@ -45,7 +59,7 @@ const App: React.FC = () => {
         <View style={styles.topBarContainer}>
           <Button
             title="Queue"
-            onPress={() => console.log('TODO: implement queue interface')}
+            onPress={() => queueThis()}
             type="primary"
           />
         </View>

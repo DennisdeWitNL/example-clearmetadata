@@ -19,6 +19,13 @@ export const PlayerControls: React.FC = () => {
           onPress={() => TrackPlayer.clearNowPlayingMetadata()}
           type="secondary"
         />
+
+<Button
+          title="Reset"
+          onPress={() => TrackPlayer.reset()}
+          type="secondary"
+        />
+
         <PlayPauseButton />
         <Button
           title="Next"

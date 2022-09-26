@@ -150,3 +150,4 @@ yarn android
 
 :confetti_ball: You've done it. :confetti_ball:
 # example-clearmetadata
+# example-rntp-clear
